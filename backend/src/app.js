@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const app = express();
+
 
 const healthRoutes = require("./routes/health");
 
@@ -15,3 +17,18 @@ app.get("/", (_req, res) => {
 app.use("/api", healthRoutes);
 
 module.exports = app;
+
+
+//middleware for parsing json
+const upload = multer({ dest: "uploads/" });
+
+//POST - Get the ppt file from the front-end
+//get the actual route parameters and logic for handling the ppt file upload, sending it to Gemini, and generating questions/story will be implemented here.
+app.post("/JIM", upload.single("file"), (req, res) => {
+  const file = req.file;
+  if (!file) {
+    return res.status(400).json({ error: "No file uploaded" });
+  }
+  // Here you can add code to send the file to Gemini and generate questions/story
+  res.status(200).json({ message: "File uploaded successfully", file });
+});
