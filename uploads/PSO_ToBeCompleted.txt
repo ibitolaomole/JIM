@@ -1,0 +1,142 @@
+# Class 7 worksheet: Part 1
+# Implement the PSO algorithm to solve a function optimization problem,
+# specified in the worksheet
+
+import random
+
+# You may change '2' to another seed number that gives you the best result  
+random.seed(2)
+
+# Function "cal_fitness(x):" is to calculate the fitness of a particle.
+# For this function optimization problem specified in the worksheet, 
+# the fitness is the y value, and x = [x1, x2] in the function formula 
+
+def cal_fitness(x):
+
+    y1 = 1.5 - x[0] + x[0] * x[1]
+    y2 = 2.25 - x[0] + x[0] * x[1] ** 2
+    y3 = 2.625 - x[0] + x[0] * x[1] ** 3
+
+    y = y1 * y1 + y2 * y2 + y3 * y3
+    
+    return y
+
+# Problem definition
+nVar = 2         # number of variables is 2 (x1 and x2)
+minVar = -10     # lower bound of x1 and x2
+maxVar = 10      # upper bound of x1 and x2
+
+# Parameters of PSO
+maxIteration = 100    # maximum number of iterations
+nPop = 30             # number of particles in the population
+w = 0.7               # inertia coefficient
+
+# Define a class to encapsulate all the variables associated with a particle 
+# (position, velocity, fitness, personal best position and personal best fitness)
+# The method _init_() is used to initialize those variables
+# Each particle is an object of this class
+
+class Particle:
+    def __init__(self, Position, Velocity, Fitness, BestPosition, BestFitness):
+        self.Position = Position
+        self.Velocity = Velocity
+        self.Fitness = Fitness
+        self.BestPosition = BestPosition
+        self.BestFitness = BestFitness
+
+# Initialization
+
+particlePop = []
+
+for i in range(nPop):
+
+    # Generate a random initial position of a particle, 
+    # and save it to a list, called "position"
+    # Implement code to achieve it.
+
+    # 1. Implement your code here
+
+    
+
+    # Initial velocity of a particle is 0
+    velocity = [0] * nVar
+
+    # Calculate the fitness value of a particle
+    fitness = cal_fitness(position)
+
+    # Initial personal best position and its fitness are the same as
+    # the initial position and its fitness of a particle
+    bestPosition = position
+    bestFitness = fitness
+
+    # Add the particle into the population
+    particlePop.append(Particle(position, velocity, fitness, bestPosition, bestFitness))
+
+# Find the best particle in the initial population, 
+# and record its position and fitness as "globalBestPosition", "globalBestFitness"
+# Implement code to achieve it.
+
+# 2. Implement your code here
+
+
+ 
+
+
+
+# Main loop of PSO
+for iter in range(maxIteration):
+    for i in range(nPop):
+
+        # For EACH dimension of particle i:
+        # generate a random number for c1 and c2, respectively,
+        # then update the velocity and position in that dimension
+        # Implement code to achieve it.
+
+        # 3. Implement your code here
+
+        
+        
+
+
+
+        # If the new position value in a dimension is out of the range [minVar, maxVar],
+        # then Bound that new position value.
+        # Implement code to achieve it.
+
+        # 4. Implement your code here
+
+        
+
+
+
+
+        # Calculate the fitness value of particle i
+        particlePop[i].Fitness = cal_fitness(particlePop[i].Position)
+
+        # Update the personal best position and its fitness of particle i
+        # Implement code to achieve it.
+
+        # 5. Implement your code here
+
+        
+
+
+
+
+    # Update the global best position and its fitness.
+    # Record them as "globalBestPosition" and "globalBestFitness", respectively.
+    # Implement code to achieve it.
+
+    # 6. Implement your code here
+
+    
+
+
+
+
+    # Print the global best fitness in each iteration
+    print("Iteration =", iter, "Global best fitness =", globalBestFitness)
+
+# Print the global best position found by the PSO algorithm
+# after the maximum number of iterations has reached.
+print("Global best position =", globalBestPosition)

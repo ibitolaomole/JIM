@@ -1,0 +1,37 @@
+# Class 5 COMP5003 template for minimax solution
+
+# Leaf node values
+values = {#TODO: Fill in the rest of leaf node values
+    "E1": 4, "E2": 4, 
+    "F1": 1, "F2": 5 
+}
+
+# Tree structure
+tree = {#TODO: Fill in the rest of the tree structure
+    "A": ["B", "C", "D"],
+    "B": ["E", "F"],
+
+    "E": ["E1", "E2"], 
+    "F": ["F1", "F2"] 
+}
+
+# Levels from bottom to top
+levels = [
+    ["E", "F", "G", "H", "I", "J"], # MAX level
+    ["B", "C", "D"],                # MIN level
+    ["A"]                           # MAX level (root)
+]
+
+# Whether each level is MAX or MIN
+level_type = ["MAX", "MIN", "MAX"]
+
+# Compute minimax values bottom-up
+for i in range(len(levels)):
+    for node in levels[i]:
+        children = tree[node]
+
+#TODO: Compute the minimax value for the current node based on its children and whether it's a MAX or MIN level
+#Use if else statements to check if it's a MAX or MIN level and compute the value accordingly using max() or min() functions on the children's values.
+
+# Final result
+print("Minimax value at A:", values["A"])
